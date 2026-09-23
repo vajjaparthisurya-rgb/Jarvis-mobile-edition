@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JARVIS Mobile Edition</title>
-  <!-- Orbitron Sci-Fi Font -->
+
+  <!-- Orbitron Font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
@@ -12,11 +13,11 @@
       box-sizing: border-box;
       font-family: 'Orbitron', sans-serif !important;
     }
+
     body {
-      /* Red overlay grid like 1st image */
       background-color: #030101;
       background-image: 
-        radial-gradient(circle, rgba(120, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.95) 80%),
+        radial-gradient(circle, rgba(100, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.95) 80%),
         linear-gradient(rgba(255, 0, 0, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 0, 0, 0.08) 1px, transparent 1px);
       background-size: 100% 100%, 25px 25px, 25px 25px;
@@ -28,69 +29,51 @@
       margin: 0;
       padding: 10px;
     }
+
     .jarvis-container {
       width: 100%;
       max-width: 340px;
       padding: 10px;
+      text-align: center;
     }
-    /* Top Titles */
+
+    /* Top Title */
     h1 {
       font-size: 24px;
       margin: 0;
-      text-align: center;
       letter-spacing: 5px;
       color: #00f3ff;
       text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
     }
+
     .subtitle {
       font-size: 9px;
-      text-align: center;
       color: #00f3ff;
       letter-spacing: 2px;
       margin-top: 3px;
       margin-bottom: 20px;
       opacity: 0.7;
     }
-    /* Arc Reactor Graphics (Matching 1st Image Exact Circles) */
-    .reactor-wrapper {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 10px auto;
-      border: 2px solid rgba(0, 243, 255, 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-      padding: 8px;
-      position: relative;
+
+    /* Arc Reactor Ring Graphic Structure */
+    .arc-reactor-svg {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 0 8px #00f3ff);
     }
-    .reactor-middle {
-      width: 90px;
-      height: 90px;
-      border: 3px solid #00f3ff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 12px #00f3ff, inset 0 0 12px #00f3ff;
-    }
-    .reactor-inner {
-      width: 40px;
-      height: 40px;
-      background-color: #00ceea;
-      border-radius: 50%;
-      box-shadow: 0 0 18px #00f3ff, 0 0 30px #00f3ff;
-    }
+
     .core-text {
       font-size: 11px;
-      text-align: center;
       letter-spacing: 2px;
+      margin-top: 10px;
       margin-bottom: 20px;
       color: #00f3ff;
       text-shadow: 0 0 5px #00f3ff;
     }
-    /* System Status Box (Exact Left Compact Layout like 1st Image) */
+
+    /* System Status Box */
     .status-box {
       border: 1px solid #00f3ff;
       box-shadow: 0 0 10px rgba(0, 243, 255, 0.25);
@@ -99,6 +82,7 @@
       background: rgba(0, 5, 10, 0.95);
       border-radius: 2px;
     }
+
     .status-title {
       font-size: 12px;
       margin: 0 0 10px 0;
@@ -108,9 +92,7 @@
       text-shadow: 0 0 6px #00f3ff;
       font-weight: 700;
     }
-    .status-table {
-      width: 100%;
-    }
+
     .status-row {
       display: flex;
       justify-content: space-between;
@@ -118,23 +100,28 @@
       font-size: 10px;
       letter-spacing: 1px;
     }
+
     .status-label {
       color: #00f3ff;
       text-align: left;
     }
+
     .online {
       color: #00ff66;
       text-shadow: 0 0 6px #00ff66;
     }
+
     .locked {
       color: #ff0044;
       text-shadow: 0 0 6px #ff0044;
     }
+
     /* Input Section */
     .input-area {
       display: flex;
       gap: 5px;
     }
+
     input {
       flex: 1;
       background: rgba(0, 0, 0, 0.8);
@@ -145,9 +132,11 @@
       outline: none;
       font-size: 10px;
     }
+
     input::placeholder {
       color: rgba(0, 243, 255, 0.5);
     }
+
     .send-btn {
       background: #00f3ff;
       color: #000;
@@ -159,6 +148,7 @@
       cursor: pointer;
       box-shadow: 0 0 6px #00f3ff;
     }
+
     .mic-btn {
       background: #00f3ff;
       color: #000;
@@ -171,26 +161,42 @@
   </style>
 </head>
 <body>
+
   <div class="jarvis-container">
     <h1>J.A.R.V.I.S</h1>
     <div class="subtitle">MOBILE EDITION</div>
-    <!-- Arc Reactor Core -->
-    <div class="reactor-wrapper">
-      <div class="reactor-middle">
-        <div class="reactor-inner"></div>
-      </div>
-    </div>
+
+    <!-- Exact Arc Reactor Concentric Rings (SVG) -->
+    <svg class="arc-reactor-svg" viewBox="0 0 200 200">
+      <!-- Outer Ring -->
+      <circle cx="100" cy="100" r="88" stroke="#00f3ff" stroke-width="2" fill="none" opacity="0.6"/>
+      
+      <!-- Outer Gap Ring -->
+      <circle cx="100" cy="100" r="80" stroke="#00f3ff" stroke-width="1.5" fill="none"/>
+      
+      <!-- Segmented Middle Ring (Notches) -->
+      <circle cx="100" cy="100" r="68" stroke="#00f3ff" stroke-width="6" stroke-dasharray="25 8" fill="none"/>
+      
+      <!-- Inner Thin Ring -->
+      <circle cx="100" cy="100" r="52" stroke="#00f3ff" stroke-width="2" fill="none"/>
+      
+      <!-- Glowing Center Core Dot -->
+      <circle cx="100" cy="100" r="28" fill="#00f3ff"/>
+    </svg>
+
     <div class="core-text">CORE ACTIVE</div>
+
     <!-- Status Box -->
     <div class="status-box">
       <div class="status-title">SYSTEM STATUS</div>
-      <div class="status-table">
+      <div>
         <div class="status-row"><span class="status-label">AI CORE</span><span class="online">● ONLINE</span></div>
         <div class="status-row"><span class="status-label">NETWORK</span><span class="online">● ONLINE</span></div>
         <div class="status-row"><span class="status-label">VOICE</span><span class="locked">○ LOCKED</span></div>
         <div class="status-row"><span class="status-label">MEMORY</span><span class="locked">○ LOCKED</span></div>
       </div>
     </div>
+
     <!-- Input Section -->
     <div class="input-area">
       <input type="text" placeholder="Ask J.A.R.V.I.S..." />
@@ -198,5 +204,6 @@
       <button class="mic-btn">🎙️</button>
     </div>
   </div>
+
 </body>
 </html>
