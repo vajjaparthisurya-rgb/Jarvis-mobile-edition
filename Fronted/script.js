@@ -64,3 +64,61 @@ add('YOU: '+t,'user'); input.value=''; askGemini(t);
 };
 function add(t,w){const d=document.createElement('div');d.className='msg
 '+w;d.innerText=t;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;}
+{
+  // Speech Recognition Setup
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+
+  const micBtn = document.querySelector('.mic-btn');
+  const inputField = document.querySelector('input');
+
+  // Mic Button click chesinappudu
+  micBtn.addEventListener('click', () => {
+    recognition.start();
+    speakJarvis("Listening, Sir.");
+  });
+
+  // Voice ni text ga marchinappudu
+  recognition.onresult = (event) => {
+    const userVoiceText = event.results[0][0].transcript;
+    inputField.value = userVoiceText;
+    processCommand(userVoiceText);
+  };
+
+  recognition.onerror = () => {
+    speakJarvis("Sorry, I could not hear you properly.");
+  };
+}
+
+// JARVIS Voice Reply (Text-to-Speech)
+function speakJarvis(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 1;
+  utterance.pitch = 1;
+  
+  const voices = window.speechSynthesis.getVoices();
+  const jarvisVoice = voices.find(v => v.name.includes('Google UK English Male') || v.lang === 'en-GB');
+  if (jarvisVoice) utterance.voice = jarvisVoice;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+// Commands Process chesi Response ivvadam
+function processCommand(command) {
+  let reply = "I am processing your query, Sir.";
+  const lowerCmd = command.toLowerCase();
+
+  if (lowerCmd.includes('hello') || lowerCmd.includes('hi')) {
+    reply = "Hello Sir, J.A.R.V.I.S is online and ready.";
+  } else if (lowerCmd.includes('time')) {
+    reply = `Current time is ${new Date().toLocaleTimeString()}`;
+  } else if (lowerCmd.includes('who are you')) {
+    reply = "I am JARVIS, your mobile artificial intelligence assistant.";
+  }
+
+  speakJarvis(reply);
+}
