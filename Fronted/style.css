@@ -68,3 +68,83 @@ button {
   box-shadow: 0 0 20px #00f3ff, inset 0 0 20px #00f3ff;
   position: relative;
 }
+body {
+  background-color: #000000;
+  color: #00f3ff;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+}
+
+/* Center Core GIF/Animation */
+.arc-reactor-img {
+  width: 140px;
+  height: 140px;
+  margin: 10px auto;
+  display: block;
+  filter: drop-shadow(0 0 15px #00f3ff);
+}
+
+/* Status Box Border (1st image la ravaniki) */
+.status-box {
+  border: 2px solid #00f3ff;
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 320px;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: left;
+}
+
+.status-box h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 0;
+  text-shadow: 0 0 8px #00f3ff;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* Status Text Colors */
+.online {
+  color: #00ff66;
+  text-shadow: 0 0 8px #00ff66;
+}
+
+.locked {
+  color: #ff0044; /* Red Color */
+  text-shadow: 0 0 8px #ff0044;
+}
+
+/* Input Fields Styling */
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00f3ff;
+  color: #00f3ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: inherit;
+  outline: none;
+}
+
+button {
+  background: #00f3ff;
+  color: #000;
+  border: none;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #00f3ff;
+}
