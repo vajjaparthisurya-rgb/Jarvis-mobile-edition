@@ -187,9 +187,11 @@
       <input type="text" placeholder="Ask J.A.R.V.I.S..." />
       <button class="send-btn">SEND</button>
       <button class="mic-btn">🎙️</button>
+      <!-- Memory Clear Button --> <button id="clear-btn">🧹</button>
+      <!-- Camera / Vision Button --> <button id="cam-btn">📷</button>
+      <input type="file" id="img-input" accept="image/*" capture="environment" style="display:none">
     </div>
   </div>
-
   <!-- Voice Logic JavaScript -->
   <script>
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
