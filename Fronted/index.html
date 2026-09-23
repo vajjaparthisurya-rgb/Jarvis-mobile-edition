@@ -7,24 +7,33 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <header><h1>J.A.R.V.I.S</h1><p>MOBILE EDITION</p></header>
- <div class="core">
- <div class="ring r1"></div>
- <div class="ring r2"></div>
- <div class="center"></div>
- </div>
- <p class="core-text">CORE ACTIVE</p>
- <div class="status">
- <h2>SYSTEM STATUS</h2>
- <div class="row"><span>AI CORE</span><b class="on">● ONLINE</b></div>
- <div class="row"><span>NETWORK</span><b class="on">● ONLINE</b></div>
- <div class="row"><span>VOICE</span><b class="off">○ LOCKED</b></div>
- <div class="row"><span>MEMORY</span><b class="off">○ LOCKED</b></div>
- </div>
- <div class="chat" id="chat"></div>
- <div class="input-area">
- <input id="msg" placeholder="Ask J.A.R.V.I.S...">
- <button id="send">SEND</button>  <button id="mic-btn">🎙️</button>
+<div class="jarvis-container">
+  <h1>J.A.R.V.I.S</h1>
+  <p class="subtitle">MOBILE EDITION</p>
+
+  <!-- 1. Arc Reactor Core GIF/Image -->
+  <div class="reactor-container">
+    <img src="arc_reactor.gif" alt="Arc Reactor" class="arc-reactor-img" />
+  </div>
+
+  <p class="core-text">CORE ACTIVE</p>
+
+  <!-- 2. System Status Box -->
+  <div class="status-box">
+    <h2>SYSTEM STATUS</h2>
+    <div class="status-item"><span>AI CORE</span> <span class="online">● ONLINE</span></div>
+    <div class="status-item"><span>NETWORK</span> <span class="online">● ONLINE</span></div>
+    <div class="status-item"><span>VOICE</span> <span class="locked">○ LOCKED</span></div>
+    <div class="status-item"><span>MEMORY</span> <span class="locked">○ LOCKED</span></div>
+  </div>
+
+  <!-- Input Area -->
+  <div class="input-container">
+    <input type="text" placeholder="Ask J.A.R.V.I.S..." />
+    <button>SEND</button>   <button class="mic-btn">🎙️</button>
+  </div>
+</div>
+
  </div>
  <script src="script.js"></script>
 </body>
